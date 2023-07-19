@@ -1,0 +1,22 @@
+#scores {
+    width: 50%;
+    border-collapse: collapse;
+}
+
+#scores th {
+    background-color: skyblue;
+}
+
+#scores td, #scores th {
+    border: 1px solid tomato;
+    padding: 0.25rem;
+    text-align: center;
+}
+
+#scores tr:nth-child(2n) {
+    background-color:silver;
+}
+
+#scores tr:hover {
+    background-color: steelblue;
+}

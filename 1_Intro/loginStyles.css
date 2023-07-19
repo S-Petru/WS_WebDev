@@ -1,0 +1,30 @@
+.container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    background-color: steelblue;
+}
+
+button {
+    background-color: rgb(255, 99, 71);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    width: 30%;
+    font-size: 1.25rem;
+    padding: 0.25rem;
+    margin: 0.75rem 0 0 0;
+}
+
+button:hover {
+    background-color: rgb(243, 81, 52);
+    cursor: pointer;
+}
+
+input {
+    width: 30%;
+    padding: 0.5rem;
+    margin: 0.75rem 0 0 0;
+    border-radius: 3px;
+    border: solid 1px black;
+}
