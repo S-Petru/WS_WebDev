@@ -7,6 +7,10 @@ body {
     width: 100vw;
 }
 
+nav {
+    width: 100%;
+}
+
 .navbar > a {
     text-decoration: none;
     color: rgb(255, 208, 0);
@@ -22,45 +26,79 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0 0 0 30px;
+    padding: 0 30px 0 30px;
     background-color: rgb(39, 39, 39);
     height: 5rem;
 }
 
 .navbar .nav-links {
-    box-sizing: border-box;
+    justify-content: space-between;
     margin: 0;
 }
 
-.navbar .nav-links a {
-    box-sizing: border-box;
-    margin: 0 30px;
-    color: rgb(255, 208, 0);
+.nav-links a {
     text-decoration: none;
+    color: rgb(255, 208, 0);
 }
+
+.nav-links a:not(:last-of-type) {
+    margin-right: 1.5rem;
+}
+
+a.current-page {
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    color: rgb(39, 39, 39);
+    background-color: rgb(255, 208, 0);
+}
+
+
+
+
+.container {
+    margin: 1rem 0 0 0;
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+
+
 
 
 #scores {
     width: 50%;
-    border-collapse: collapse;
 }
+
+table {
+    border-collapse: collapse;
+    border-radius: 1em;
+    overflow: hidden;
+  }
 
 #scores th {
-    background-color: skyblue;
+    color: rgb(39, 39, 39);
+    background-color: rgb(255, 208, 0);
 }
 
+#scores td {
+    border-radius: 10px;
+}
 #scores td, #scores th {
-    border: 1px solid tomato;
     padding: 0.25rem;
     text-align: center;
 }
 
 #scores tr:nth-child(2n) {
-    background-color:silver;
+    color: white;
+    background-color:rgb(39, 39, 39);
+}
+#scores tr:nth-child(2n+1) {
+    color: white;
+    background-color:rgb(76, 76, 76);
 }
 
 #scores tr:hover {
-    background-color: steelblue;
+    opacity: 0.4;
 }
 
 
@@ -68,11 +106,20 @@ body {
 
 
 @media screen and (max-width: 600px) {
+    .navbar > a {
+        margin: 0;
+    }
+
+    .navbar .nav-links {
+        margin: 0;
+        padding: 0.75rem 0;
+    }
+
     .navbar {
-        box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        padding: 0 0 10px 0;
+        align-items: center;
+        justify-content: center;
     }
      
   }

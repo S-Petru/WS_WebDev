@@ -7,6 +7,12 @@ body {
     background-color: gray;
     height: 100vh;
     width: 100vw;
+    overflow-x: hidden;
+    box-sizing: content-box;
+}
+
+nav {
+    width: 100%;
 }
 
 .navbar > a {
@@ -19,34 +25,43 @@ body {
 }
 
 .navbar {
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0 0 0 30px;
+    padding: 0 30px 0 30px;
     background-color: rgb(39, 39, 39);
     height: 5rem;
 }
 
 .navbar .nav-links {
-    box-sizing: border-box;
+    justify-content: space-between;
     margin: 0;
 }
 
-.navbar .nav-links a {
-    box-sizing: border-box;
-    margin: 0 30px;
-    color: rgb(255, 208, 0);
+.nav-links a {
     text-decoration: none;
+    color: rgb(255, 208, 0);
+}
+
+.nav-links a:not(:last-of-type) {
+    margin-right: 1.5rem;
+}
+
+a.current-page {
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    color: rgb(39, 39, 39);
+    background-color: rgb(255, 208, 0);
 }
 
 
 
 
 .content {
-    box-sizing: border-box;
-    width: 90%;
     margin: 2rem auto;
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
@@ -62,13 +77,12 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 28rem;
-    height: 32rem;
+    width: 100%;
     padding: 8px 4px ;
 }
 
 .card:hover {
-    box-shadow: 10px 5px 5px black;
+    opacity: 0.75;
 }
 
 .card .img-container {
@@ -88,6 +102,14 @@ body {
 }
 
 
+
+
+
+
+
+
+
+/* ============ MEDIA 1400 ============ */
 @media screen and (max-width: 1400px) {
     .content {
         grid-template-columns: repeat(2, 1fr);
@@ -110,12 +132,28 @@ body {
   }
 
 
+
+
+
+
+
+/* ============ MEDIA 600 ============ */
 @media screen and (max-width: 600px) {
+    .navbar > a {
+        margin: 0;
+    }
+
+    .navbar .nav-links {
+        margin: 0;
+        padding: 0.75rem 0;
+    }
+
+
     .navbar {
-        box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        padding: 0 0 10px 0;
+        align-items: center;
+        justify-content: center;
     }
 
     .content {

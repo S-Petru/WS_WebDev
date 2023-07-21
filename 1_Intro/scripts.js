@@ -10,6 +10,10 @@ function mainMenu() {
     document.location.assign("menu.html");
 }
 
+function logIn() {
+    document.location.assign("login.html")
+}
+
 
 function highScores(game) {
     document.location.assign("highScores.html");

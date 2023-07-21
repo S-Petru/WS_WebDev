@@ -7,6 +7,10 @@ body {
     width: 100vw;
 }
 
+nav {
+    width: 100%;
+}
+
 .navbar > a {
     text-decoration: none;
     color: rgb(255, 208, 0);
@@ -22,35 +26,66 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0 0 0 30px;
+    padding: 0 30px 0 30px;
     background-color: rgb(39, 39, 39);
     height: 5rem;
 }
 
 .navbar .nav-links {
-    box-sizing: border-box;
+    justify-content: space-between;
     margin: 0;
 }
 
-.navbar .nav-links a {
-    box-sizing: border-box;
-    margin: 0 30px;
-    color: rgb(255, 208, 0);
+.nav-links a {
     text-decoration: none;
+    color: rgb(255, 208, 0);
+}
+
+.nav-links a:first-of-type {
+    margin-right: 1.5rem;
+}
+
+a.current-page {
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    color: rgb(39, 39, 39);
+    background-color: rgb(255, 208, 0);
 }
 
 
 
 
+
+.content {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin-top: 3rem;
+}
+
 .container {
-    width: 50%;
     display: flex;
     flex-direction: column;
-    background-color: steelblue;
+    align-items: center;
+    background-color: rgb(39, 39, 39);
+    color: rgb(255, 208, 0);
+    width: 40%;
+    padding: 3rem 0;
+    border-radius: 5px;
+}
+
+.container h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.container label {
+    margin-top: 1.5rem;
 }
 
 button {
-    background-color: rgb(255, 99, 71);
+    background-color: rgb(255, 208, 0);
     border: none;
     border-radius: 3px;
     color: white;
@@ -61,7 +96,7 @@ button {
 }
 
 button:hover {
-    background-color: rgb(243, 81, 52);
+    opacity: 0.7;
     cursor: pointer;
 }
 
@@ -76,13 +111,54 @@ input {
 
 
 
+
+
+/* ============ MEDIA 1200 ============ */
+@media screen and (max-width: 1200px) {
+    .content {
+        align-items: start;
+        margin-top: 2rem;
+    }
+
+    .container {
+        width: 70%;
+    }  
+  }
+
+
+
+
+
+/* ============ MEDIA 600 ============ */
 @media screen and (max-width: 600px) {
+    .navbar > a {
+        margin: 0;
+    }
+
+    .navbar .nav-links {
+        margin: 0;
+        padding: 0.75rem 0;
+    }
+
+
     .navbar {
-        box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        padding: 0 0 10px 0;
+        align-items: center;
+        justify-content: center;
     }
-     
+
+    .content {
+        align-items: start;
+        margin-top: 2rem;
+    }
+
+    .container {
+        width: 90%;
+    }  
+
+    input {
+        width: 50%;
+    }     
   }
   
