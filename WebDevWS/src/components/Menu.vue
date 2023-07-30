@@ -29,7 +29,7 @@
 <script scoped>
 </script>
 
-<style>
+<style scoped>
 .content {
     margin: 2rem auto;
     width: 90%;

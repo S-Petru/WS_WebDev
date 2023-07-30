@@ -7,7 +7,7 @@
             <label>Password: </label>
             <input type="password" placeholder="Enter Password" id="password">  
             <p style="color: red;" id="err"></p>
-            <button type="button" @click="tryLogIn()">Login</button>
+            <button type="button" @click="tryLogIn">Login</button>
         </div>
     </div>
 </template>
@@ -16,7 +16,6 @@
 <script>
     export default {
         name: 'Login',
-
         methods: {
             tryLogIn() {
                 if (document.getElementById('username').value && document.getElementById('password').value) {
