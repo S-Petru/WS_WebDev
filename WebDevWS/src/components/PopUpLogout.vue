@@ -4,8 +4,8 @@
             <slot></slot>
             <h2>Are you sure you want to logout?</h2>
             <div class="choices">
-                <h4 class="popup-close" @click = "">No</h4>
-                <h4 class="popup-confirm" @click = "">Yes</h4>
+                <h4 class="popup-confirm" @click = "LogOut">Yes</h4>
+                <h4 class="popup-close" @click = "ClosePopUp">No</h4>
             </div>
             
         </div>
@@ -13,6 +13,23 @@
 </template>
 
 <script scoped>
+export default {
+    name: 'PopUp',
+    methods: {
+        LogOut() {
+            this.$emit('changeState', {
+                        state: 0,
+                        showPopup: false,
+                    });
+            },
+        ClosePopUp() {
+            this.$emit('changeState', {
+                state: 1,       
+                showPopup: false,
+            });
+        }
+    }
+}
 </script>
 
 <style scoped>
@@ -22,7 +39,7 @@
         width: 35%;
         background-color: rgb(39, 39, 39);
         border: 1px solid white;
-        position: absolute;
+        position: fixed;
         top: 40%;
         left: 50%;
         transform: translate(-50%, -50%);

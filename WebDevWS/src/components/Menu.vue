@@ -50,10 +50,14 @@
     justify-content: center;
     width: 100%;
     padding: 8px 4px ;
+
+    transition: 0.15s ease;
 }
 
 .card:hover {
-    opacity: 0.75;
+    transition: transform 0.15s ease;
+    transform: scale(1.035);
+
 }
 
 .card .img-container {

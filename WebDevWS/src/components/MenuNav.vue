@@ -1,9 +1,9 @@
 <template>
      <nav>
         <div class="navbar">
-            <a href="#" @click = "goToMenu">TinyClip</a>
+            <a href="#"  class="title" @click = "goToMenu">TinyClip</a>
             <div class="nav-links">
-                <a class="current-page" href="#" @click = "goToMenu">Menu</a>
+                <a href="#" @click = "goToMenu">Menu</a>
                 <a href="#" @click = "goToHighscores">High Scores</a>
                 <a href="#" @click = "tryLogOut">Logout</a>
             </div>
@@ -19,18 +19,27 @@ goToRegister() {
     this.$emit('changeState', -1);
 } -->
 
-<script>
+<script scoped>
     export default {
         name: 'MenuNav',
         methods: {
             goToMenu() {
-                this.$emit('changeState', 1);
+                this.$emit('changeState', {
+                        state: 1,
+                        showPopup: false,
+                    });
             },
             tryLogOut() {
-                this.$emit('changeState', 0);
+                this.$emit('changeState', {
+                        state: 1,
+                        showPopup: true,
+                    });
             },
             goToHighscores() {
-                this.$emit('changeState', 2);
+                this.$emit('changeState', {
+                        state: 2,
+                        showPopup: false,
+                    });
             }
         }
     }
@@ -65,6 +74,17 @@ goToRegister() {
 .nav-links a {
     text-decoration: none;
     color: rgb(255, 208, 0);
+    border-radius: 0.5rem;
+    padding: 0 0.25rem;
+
+    transition: 0.25s ease;
+}
+.nav-links a:hover {
+    text-decoration: none;
+    color: rgb(39, 39, 39);
+    background-color: rgb(255, 208, 0);
+
+    transition: 0.25s ease;
 }
 
 .nav-links a:not(:last-of-type) {

@@ -20,7 +20,10 @@
             tryLogIn() {
                 if (document.getElementById('username').value && document.getElementById('password').value) {
                     //document.location.assign("menu.html")
-                    this.$emit("changeState", 1);
+                    this.$emit('changeState', {
+                        state: 1,
+                        showPopup: false,
+                    });
 
                 } else {
                     document.getElementById('err').textContent = 'Please fill in all fields';

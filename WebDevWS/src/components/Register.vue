@@ -7,20 +7,22 @@
             <label>Password: </label>
             <input type="password" placeholder="Choose Password" id="password">  
             <p style="color: red;" id="err"></p>
-            <button type="button" onclick="tryRegister()">Register</button>
+            <button type="button" @click="tryRegister">Register</button>
         </div>
     </div>
 </template>
 
 <script scoped>
-export default {
+    export default {
         name: 'Register',
         methods: {
-
             tryRegister() {
                 if (document.getElementById('username').value && document.getElementById('password').value) {
                     //document.location.assign("menu.html")
-                    this.$emit("changeState", 0);
+                    this.$emit('changeState', {
+                        state: 0,
+                        showPopup: false,
+                    });
 
                 } else {
                     document.getElementById('err').textContent = 'Please fill in all fields';
@@ -29,7 +31,6 @@ export default {
                     }, 1000)
                 }
             }
-
         }
     }
 </script>
