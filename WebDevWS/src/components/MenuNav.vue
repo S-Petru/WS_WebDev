@@ -2,6 +2,7 @@
      <nav>
         <div class="navbar">
             <a href="#"  class="title" @click = "goToMenu">TinyClip</a>
+            <input type="text" v-model="search">
             <div class="nav-links">
                 <a href="#" @click = "goToMenu">Menu</a>
                 <a href="#" @click = "goToHighscores">High Scores</a>
@@ -66,6 +67,11 @@ goToRegister() {
     height: 5rem;
 }
 
+.navbar input {
+    width: 45%;
+    height: 33%;
+}
+
 .navbar .nav-links {
     justify-content: space-between;
     margin: 0;
@@ -97,4 +103,30 @@ a.current-page {
     color: rgb(39, 39, 39);
     background-color: rgb(255, 208, 0);
 }
+
+
+@media screen and (max-width: 765px) {
+    .navbar input {
+        width: 245px;
+        height: auto;
+    }
+    .navbar > a {
+        margin: 0;
+    }
+
+    .navbar .nav-links {
+        margin: 0;
+        padding: 0.75rem 0;
+    }
+
+
+    .navbar {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+  }
+
 </style>

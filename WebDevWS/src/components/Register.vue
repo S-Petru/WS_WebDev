@@ -36,6 +36,15 @@
 </script>
 
 <style scoped>
+.container label {
+    margin-top: 1.5rem;
+}
+
+.container input {
+    color: white;
+    border-color: white;
+    width: 50%;
+}
 .content {
     width: 100vw;
     display: flex;

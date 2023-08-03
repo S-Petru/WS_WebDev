@@ -50,15 +50,17 @@ export default {
         display: flex;
         flex-direction: column;
         color: rgb(255, 208, 0);
-        justify-content: center;
+        /* justify-content: space-between; */
         align-items: center;
         text-align: center;
     }
 
     .choices {
+        height:8rem;
         width: 50%;
         display: flex;
         flex-direction: row;
+        align-items: center;
         justify-content: space-between;
     }
     .choices h4 {

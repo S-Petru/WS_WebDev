@@ -1,5 +1,5 @@
 <script setup>
- import Register from './components/Register.vue';
+  import Register from './components/Register.vue';
   import Login from './components/Login.vue';
   import LoginNav from './components/LoginNav.vue';
   import Menu from './components/Menu.vue';
@@ -23,8 +23,8 @@
   </div>
 
   <div v-else-if="state.state == 1">
-    <MenuNav  @changeState="updatedStateHandler"></MenuNav>
-    <Menu></Menu>
+    <!-- <MenuNav  @changeState="updatedStateHandler"></MenuNav> -->
+    <Menu  @changeState="updatedStateHandler"></Menu>
     <div v-if="state.showPopup == true">
       <PopUp @changeState="updatedStateHandler"></PopUp>
     </div>
@@ -55,6 +55,7 @@ export default {
 
   data () {
     return {
+      search: '',
       state: {
         state: 0,
         showPopup: false,

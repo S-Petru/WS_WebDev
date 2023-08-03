@@ -65,6 +65,12 @@
     margin-top: 1.5rem;
 }
 
+.container input {
+    color: white;
+    border-color: white;
+    width: 50%;
+}
+
 button {
     background-color: rgb(255, 208, 0);
     border: none;
