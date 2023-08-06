@@ -23,15 +23,14 @@
   </div>
 
   <div v-else-if="state.state == 1">
-    <!-- <MenuNav  @changeState="updatedStateHandler"></MenuNav> -->
-    <Menu  @changeState="updatedStateHandler"></Menu>
+    <Menu  @changeState="updatedStateHandler" @selectedGame="game = $event"></Menu>
     <div v-if="state.showPopup == true">
       <PopUp @changeState="updatedStateHandler"></PopUp>
     </div>
   </div>
 
   <div v-else-if="state.state == 2">
-    <MenuNav  @changeState="updatedStateHandler"></MenuNav>
+    <MenuNav  @changeState="updatedStateHandler" :name="game"></MenuNav>
     <Highscores></Highscores>
     <div v-if="state.showPopup == true">
       <PopUp @changeState="updatedStateHandler"></PopUp>
@@ -56,11 +55,13 @@ export default {
   data () {
     return {
       search: '',
+
       state: {
         state: 0,
         showPopup: false,
-      }
-      
+      },
+
+      game: ''
     };
   },
 
@@ -70,13 +71,6 @@ export default {
       this.state.showPopup = newState.showPopup;
     },
   },
-
-  // setup () {
-  //   const popupTriggers = ref ({
-  //       buttonTrigger: false,
-  //       timedTrigger: false
-  //   });
-  // }
 };
 </script>
 

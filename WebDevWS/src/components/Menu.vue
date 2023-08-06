@@ -6,6 +6,7 @@
                 <div class="nav-links">
                     <a href="#" @click = "goToMenu">Menu</a>
                     <a href="#" @click = "goToHighscores">High Scores</a>
+                    <v-icon color="rgb(255, 208, 0)">mdi-logout</v-icon>
                     <a href="#" @click = "tryLogOut">Logout</a>
                 </div>
             </div>
@@ -14,7 +15,8 @@
     <v-container class="container">
         <v-row class="row">
             <v-col class="col" v-for="i in count" :key="i" cols="3" :id="'element' + i" style="display: block;">
-                <v-card class="mx-auto card" max-width="400">
+                <!-- <v-card class="mx-auto card" max-width="400" height="400"> -->
+                <v-card class=" card" @click="selectGame(i)">
                     <v-img :src= "games[i-1].image" class="img" height="200px" cover></v-img>
                     <v-card-title class="card-title">{{ games[i-1].title }}</v-card-title>
                     <v-card-text class="card-description">{{ games[i-1].title }}</v-card-text>
@@ -86,6 +88,13 @@
                         state: 2,
                         showPopup: false,
                     });
+            },
+            selectGame(pos) {
+                this.$emit('changeState', {
+                    state: 2,
+                    showPopup: false,
+                });
+                this.$emit('selectedGame', this.games[pos-1].title)
             }
         }
     }
@@ -143,25 +152,47 @@ input {
     margin-right: 1.5rem;
 }
 
+
+
+
+
 .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     margin: 2rem auto;
     padding: 0;
 }
 
 .col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 0.5rem;
     padding: 0;
 }
 
-.row {
+.card {
+    width: 300px;
+    height: 300px;
+}
+
+.v-row {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    flex: none;
+}
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
     padding: 0;
     margin: 0;
-    width: 100%;
 }
+
+
+
 .card {
     box-sizing: border-box;
     border-radius: 0.5rem;
@@ -176,94 +207,14 @@ input {
 
 }
 
-/*
-.content {
-    margin: 2rem auto;
-    width: 90%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    justify-items: center;
-}
 
-.card {
-    box-sizing: border-box;
-    border-radius: 0.5rem;
-    background-color: rgb(39, 39, 39);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 8px 4px ;
-
-    transition: 0.15s ease;
-} */
-
-/* .card.hidden {
-    display: none;
-} */
-
-/* .card:hover {
-    transition: transform 0.15s ease;
-    transform: scale(1.035);
-
-}
-
-.card .img-container {
-    width: 90%;
-    height: 60%;
-}
-
-.img-container img {
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.to-center img {
-    object-position: -30px;
-}
-
-
-
-
-
-
-
-
-
-/* ============ MEDIA 1400 ============ */
-/* @media screen and (max-width: 1400px) {
-    .content {
-        box-sizing: border-box;
-        padding: 0 3rem;
-        grid-template-columns: repeat(2, 1fr);
+@media screen and (max-width: 1280px) {
+    .row {
+        grid-template-columns: 1fr 1fr;
     }
-
-    .card {
-        width: 100%;
-        height: 32rem;
-        padding: 8px 4px ;
-    }
-
-  }
+}
 
 
-
-
-
-
-  @media screen and (max-width: 970px) {
-    .content {
-        width: 60%;
-        grid-template-columns: repeat(1, 1fr);
-        padding: 0;
-    }
-
-  }
 
 
 
@@ -289,12 +240,12 @@ input {
         align-items: center;
         justify-content: center;
     }
-  } */
+  } 
 
 
 
 /* ============ MEDIA 600 ============ */
-/* @media screen and (max-width: 600px) {
+ @media screen and (max-width: 600px) {
     .navbar > a {
         margin: 0;
     }
@@ -312,10 +263,10 @@ input {
         justify-content: center;
     }
 
-    .content {
-        width: 90%;
-        grid-template-columns: repeat(1, 1fr);
+    .row {
+        align-items: center;
+        grid-template-columns: 1fr;
     }
 
-  }  */
+  }
 </style>

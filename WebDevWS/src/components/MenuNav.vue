@@ -1,12 +1,12 @@
 <template>
      <nav>
         <div class="navbar">
-            <a href="#"  class="title" @click = "goToMenu">TinyClip</a>
-            <input type="text" v-model="search">
+            <a href="#"  class="title" @click = "goToMenu()">{{ name }}</a>
+            <!-- <input type="text" v-model="search"> -->
             <div class="nav-links">
-                <a href="#" @click = "goToMenu">Menu</a>
-                <a href="#" @click = "goToHighscores">High Scores</a>
-                <a href="#" @click = "tryLogOut">Logout</a>
+                <a href="#" @click = "goToMenu()">Menu</a>
+                <a href="#" @click = "goToHighscores()">High Scores</a>
+                <a href="#" @click = "tryLogOut()">Logout</a>
             </div>
         </div>
     </nav>
@@ -42,7 +42,8 @@ goToRegister() {
                         showPopup: false,
                     });
             }
-        }
+        },
+        props: ['name']
     }
 </script>
 
