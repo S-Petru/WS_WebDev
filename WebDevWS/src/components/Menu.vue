@@ -5,7 +5,7 @@
                 <input type="text" id="search" placeholder="Search" autocomplete="off" @input = "search()">
                 <div class="nav-links">
                     <a href="#" @click = "goToMenu">Menu</a>
-                    <a href="#" @click = "goToHighscores">High Scores</a>
+                    <!-- <a href="#" @click = "goToHighscores">High Scores</a> -->
                     <v-icon color="rgb(255, 208, 0)">mdi-logout</v-icon>
                     <a href="#" @click = "tryLogOut">Logout</a>
                 </div>
@@ -18,9 +18,11 @@
                 <!-- <v-card class="mx-auto card" max-width="400" height="400"> -->
                 <v-card class=" card" @click="selectGame(i)">
                     <v-img :src= "games[i-1].image" class="img" height="200px" cover></v-img>
-                    <v-card-title class="card-title">{{ games[i-1].title }}</v-card-title>
-                    <v-card-text class="card-description">{{ games[i-1].title }}</v-card-text>
-                </v-card>
+                    <div class="card-title-description">
+                        <v-card-title class="card-title">{{ games[i-1].title }}</v-card-title>
+                        <v-card-text class="card-description">{{ games[i-1].description }}</v-card-text>
+                    </div>
+                    </v-card>
             </v-col>
         </v-row>
     </v-container>
@@ -42,12 +44,12 @@
             init () {
                 var game1 = {
                     title: 'Balloon Madness',
-                    description: '[Description Balloons]',
+                    description: 'Challenge your precision and reflexes in this addictive balloon-popping game!',
                     image: 'public/balloons.avif'
                 }
                 var game2 = {
                     title: 'Endless Runner',
-                    description: '[Description Runner]',
+                    description: 'Dash through a dynamic world, dodge obstacles, and set new high scores in this exhilarating endless runner game!',
                     image: 'public/runner.jpg'
                 }
                 var game3 = {
@@ -83,17 +85,41 @@
                         showPopup: true,
                     });
             },
-            goToHighscores() {
-                this.$emit('changeState', {
-                        state: 2,
-                        showPopup: false,
-                    });
-            },
+            // goToHighscoresBaloons() {
+            //     this.$emit('changeState', {
+            //             state: 2,
+            //             showPopup: false,
+            //         });
+            // },
+            // goToHighscoresRunner() {
+            //     this.$emit('changeState', {
+            //             state: 3,
+            //             showPopup: false,
+            //         });
+            // },
+            // goToHighscoresComingSoon() {
+            //     this.$emit('changeState', {
+            //             state: 4,
+            //             showPopup: false,
+            //         });
+            // },
             selectGame(pos) {
-                this.$emit('changeState', {
+                if(pos-1 == 0){
+                    this.$emit('changeState', {
                     state: 2,
                     showPopup: false,
                 });
+                }else if(pos-1 == 1) {
+                    this.$emit('changeState', {
+                    state: 3,
+                    showPopup: false,
+                }); 
+                }else if(pos-1 == 2) {
+                    this.$emit('changeState', {
+                    state: 4,
+                    showPopup: false,
+                }); 
+                }
                 this.$emit('selectedGame', this.games[pos-1].title)
             }
         }
@@ -113,7 +139,8 @@ input {
  .navbar > a {
     text-decoration: none;
     color: rgb(255, 208, 0);
-    font-size: 2rem;
+    font-size: 2.5rem;
+    font-weight: 500;
     margin: 0;
     align-items: center;
     justify-content: center;
@@ -173,11 +200,6 @@ input {
     padding: 0;
 }
 
-.card {
-    width: 300px;
-    height: 300px;
-}
-
 .v-row {
     display: flex;
     justify-content: center;
@@ -194,6 +216,8 @@ input {
 
 
 .card {
+    width: 350px;
+    height: 400px;
     box-sizing: border-box;
     border-radius: 0.5rem;
     background-color: rgb(39, 39, 39);
@@ -201,10 +225,25 @@ input {
     transition: 0.15s ease;
 }
 
+.card-title-description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-title {
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.card-description {
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
 .card:hover {
     transition: transform 0.15s ease;
     transform: scale(1.035);
-
 }
 
 
@@ -218,7 +257,10 @@ input {
 
 
 
-  @media screen and (max-width: 765px) {
+  @media screen and (max-width: 770px) {
+    .row {
+        grid-template-columns: 1fr;
+    }
     .navbar input {
         width: 245px;
         height: auto;

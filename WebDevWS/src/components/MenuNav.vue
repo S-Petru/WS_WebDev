@@ -5,8 +5,9 @@
             <!-- <input type="text" v-model="search"> -->
             <div class="nav-links">
                 <a href="#" @click = "goToMenu()">Menu</a>
-                <a href="#" @click = "goToHighscores()">High Scores</a>
-                <a href="#" @click = "tryLogOut()">Logout</a>
+                <!-- <a href="#" @click = "goToHighscores()">High Scores</a> -->
+                <v-icon color="rgb(255, 208, 0)">mdi-logout</v-icon>
+                    <a href="#" @click = "tryLogOut()">Logout</a>
             </div>
         </div>
     </nav>

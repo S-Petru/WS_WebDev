@@ -39,7 +39,8 @@
 .navbar > a {
     text-decoration: none;
     color: rgb(255, 208, 0);
-    font-size: 2rem;
+    font-size: 2.5rem;
+    font-weight: 500;
     margin: 0;
     align-items: center;
     justify-content: center;
@@ -64,6 +65,16 @@
 .nav-links a {
     text-decoration: none;
     color: rgb(255, 208, 0);
+    font-size: 1.25rem;
+    font-weight: 300;
+    padding: 1px 4px;
+    border-radius: 5px;
+    transition: ease-in-out 0.15s;
+}
+
+.nav-links a:hover {
+    background-color: rgb(255, 208, 0);
+    color: rgb(39, 39, 39);
 }
 
 .nav-links a:first-of-type {

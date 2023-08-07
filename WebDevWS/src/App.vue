@@ -29,7 +29,9 @@
     </div>
   </div>
 
-  <div v-else-if="state.state == 2">
+  <!-- Pagina de highscores a fiecarui joc sa aiba state uri diferite?-->
+
+  <div v-else-if="state.state == 2 || state.state == 3 || state.state == 4">
     <MenuNav  @changeState="updatedStateHandler" :name="game"></MenuNav>
     <Highscores></Highscores>
     <div v-if="state.showPopup == true">

@@ -2,6 +2,8 @@
     <div class="content">
         <div class="container">
             <h1>Register</h1>
+            <label>Email: </label>
+            <input type="text" placeholder="Choose Email" id="username">
             <label>Username: </label>
             <input type="text" placeholder="Choose Username" id="username">
             <label>Password: </label>
@@ -67,9 +69,12 @@
 .container h1 {
     font-size: 3rem;
     margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.1px;
 }
 
 .container label {
+    font-weight: 400;
     margin-top: 1.5rem;
 }
 
@@ -82,11 +87,12 @@ button {
     font-size: 1.25rem;
     padding: 0.25rem;
     margin: 0.75rem 0 0 0;
+    transition: ease-in-out 0.25s;
 }
 
 button:hover {
-    opacity: 0.7;
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 input {

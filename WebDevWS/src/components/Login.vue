@@ -8,6 +8,7 @@
             <input type="password" placeholder="Enter Password" id="password">  
             <p style="color: red;" id="err"></p>
             <button type="button" @click="tryLogIn">Login</button>
+            <a href="#">Forgot Password?</a>
         </div>
     </div>
 </template>
@@ -59,9 +60,12 @@
 .container h1 {
     font-size: 3rem;
     margin: 0;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
 
 .container label {
+    font-weight: 400;
     margin-top: 1.5rem;
 }
 
@@ -80,11 +84,12 @@ button {
     font-size: 1.25rem;
     padding: 0.25rem;
     margin: 0.75rem 0 0 0;
+    transition: ease-in-out 0.25s;
 }
 
 button:hover {
-    opacity: 0.7;
     cursor: pointer;
+    transform: scale(1.1);
 }
 
 input {
@@ -93,6 +98,17 @@ input {
     margin: 0.75rem 0 0 0;
     border-radius: 3px;
     border: solid 1px black;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(255, 208, 0);
+    font-weight: 200;
+    margin-top: 1rem;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 
