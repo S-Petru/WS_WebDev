@@ -36,7 +36,7 @@
                     });
             }
         },
-        props: ['name']
+        props: ['name', 'user']
     }
 </script>
 

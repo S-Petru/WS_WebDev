@@ -17,7 +17,7 @@
             <v-col class="col" v-for="i in count" :key="i" cols="3" :id="'element' + i" style="display: block;">
                 <!-- <v-card class="mx-auto card" max-width="400" height="400"> -->
                 <v-card class=" card" @click="selectGame(i)">
-                    <v-img :src= "games[i-1].image" class="img" height="200px" cover></v-img>
+                    <v-img :src="'http://127.0.0.1:5000/getImageById/' + games[i-1].image" class="img" height="200px" cover></v-img>
                     <div class="card-title-description">
                         <v-card-title class="card-title">{{ games[i-1].title }}</v-card-title>
                         <v-card-text class="card-description">{{ games[i-1].description }}</v-card-text>
@@ -29,6 +29,7 @@
 </template>
 
 <script scoped>
+    import axios from 'axios'
     export default {
         name: "Menu",
         data() {
@@ -41,31 +42,19 @@
             this.init()
         },
         methods: {
-            init () {
-                var game1 = {
-                    id: '64d33b76da5eaaac8824754b',
-                    title: 'Balloon Madness',
-                    description: 'Challenge your precision and reflexes in this addictive balloon-popping game!',
-                    image: 'public/balloons.avif'
-                }
-                var game2 = {
-                    id: '64d33b76da5eaaac8824754c',
-                    title: 'Endless Runner',
-                    description: 'Dash through a dynamic world, dodge obstacles, and set new high scores in this exhilarating endless runner game!',
-                    image: 'public/runner.jpg'
-                }
-                var game3 = {
-                    id: '64d33b76da5eaaac8824754d',
-                    title: 'Coming Soon',
-                    description: '[Description Soon]',
-                    image: 'public/comingSoon.jpg'
-                }
-                this.games.push(game1)
-                this.games.push(game2)
-                this.games.push(game3)
-                this.count = this.games.length
-
+            async init () {
+                const api = axios.create({
+                    baseURL: 'http://127.0.0.1:5000',
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    },
+                    timeout: 10000
+                })
+                    const response = await api.get('/getGames')
+                    this.games = response.data.result
+                    this.count = this.games.length
             },
+
             search() {
                 for(var i = 0; i < this.count; i++) {
                     if(this.games[i].title.toLowerCase().includes(document.getElementById("search").value.toLowerCase())) {
@@ -105,7 +94,7 @@
                 }); 
                 }
                 this.$emit('selectedGame', this.games[pos-1].title)
-                this.$emit('selectedGameID', this.games[pos-1].id)
+                this.$emit('selectedGameID', this.games[pos-1]._id) // aici era nevoie de '_id' pt ca games nu mai e hardocdat si respecta forma responsului de pe server
             }
         },
         // props: ['id'],

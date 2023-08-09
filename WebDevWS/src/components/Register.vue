@@ -2,36 +2,63 @@
     <div class="content">
         <div class="container">
             <h1>Register</h1>
-            <label>Email: </label>
-            <input type="text" placeholder="Choose Email" id="username">
+            <!-- <label>Email: </label>
+            <input type="text" placeholder="Lasa fara" id="username"> -->
             <label>Username: </label>
             <input type="text" placeholder="Choose Username" id="username">
             <label>Password: </label>
-            <input type="password" placeholder="Choose Password" id="password">  
+            <input type="password" placeholder="Choose Password" id="password">
             <p style="color: red;" id="err"></p>
-            <button type="button" @click="tryRegister">Register</button>
+            <button type="button" @click="tryRegister()">Register</button>
         </div>
     </div>
 </template>
 
 <script scoped>
+    import axios from 'axios'
     export default {
         name: 'Register',
-        methods: {
-            tryRegister() {
-                if (document.getElementById('username').value && document.getElementById('password').value) {
-                    //document.location.assign("menu.html")
-                    this.$emit('changeState', {
-                        state: 0,
-                        showPopup: false,
-                    });
+        props: [],
+        // mounted() {
+        //     this.init()
+        // },
+        // data() {
 
-                } else {
-                    document.getElementById('err').textContent = 'Please fill in all fields';
-                    setTimeout(() => {
-                        document.getElementById('err').textContent = '';
-                    }, 1000)
-                }
+        // },
+        methods: {
+             async tryRegister() {
+                
+                if (document.getElementById('username').value && document.getElementById('password').value) {
+                    const api = axios.create({
+                        baseURL: 'http://127.0.0.1:5000',
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        },
+                        timeout: 10000
+                    })
+                        
+                        usrName = String(document.getElementById('username').value)
+                        passWrd = String(document.getElementById('password').value)
+
+                        const response =  await axios.post('/registerUser/' + usrName + '/' + passWrd,
+                        formData,
+                        {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                        }
+                        })
+                        console.log(response)
+
+                        this.$emit('changeState', {
+                            state: 0,
+                            showPopup: false,
+                        });
+                    } else {
+                        document.getElementById('err').textContent = 'Please fill in all fields';
+                        setTimeout(() => {
+                            document.getElementById('err').textContent = '';
+                        }, 1000)
+                    }
             }
         }
     }
@@ -117,7 +144,7 @@ input {
 
     .container {
         width: 70%;
-    }  
+    }
   }
 
 
@@ -150,11 +177,11 @@ input {
 
     .container {
         width: 90%;
-    }  
+    }
 
     input {
         width: 50%;
-    }     
+    }
   }
 
 </style>

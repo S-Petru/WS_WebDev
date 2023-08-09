@@ -25,6 +25,7 @@
                         state: 1,
                         showPopup: false,
                     });
+                    this.$emit('username', document.getElementById('username').value)
 
                 } else {
                     document.getElementById('err').textContent = 'Please fill in all fields';

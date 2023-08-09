@@ -6,6 +6,7 @@
   import Highscores from './components/Highscores.vue';
   import MenuNav from './components/MenuNav.vue';
   import PopUp from './components/PopUpLogout.vue';
+  import ForgotPassword from './components/ForgotPassword.vue'
 
   // import { ref } from 'vue';
 </script>
@@ -19,7 +20,7 @@
 
   <div v-if="state.state == 0">
     <LoginNav @changeState="updatedStateHandler"></LoginNav>
-    <Login @changeState="updatedStateHandler"></Login>
+    <Login @changeState="updatedStateHandler" @username="user = $event"></Login>
   </div>
 
   <div v-else-if="state.state == 1">
@@ -32,8 +33,8 @@
   <!-- Pagina de highscores a fiecarui joc sa aiba state uri diferite?-->
 
   <div v-else-if="state.state == 2 || state.state == 3 || state.state == 4">
-    <MenuNav  @changeState="updatedStateHandler" :name="game" :id="id"></MenuNav>
-    <Highscores :id="id"></Highscores>
+    <MenuNav  @changeState="updatedStateHandler" :name= "game" :id="id" :user="user"></MenuNav>
+    <Highscores :id="id" :user="user"></Highscores>
     <div v-if="state.showPopup == true">
       <PopUp @changeState="updatedStateHandler"></PopUp>
     </div>
@@ -63,7 +64,9 @@ export default {
         showPopup: false,
       },
 
-      game: ''
+      game: '',
+      user: '',
+      id: ''
     };
   },
 

@@ -30,7 +30,7 @@ print(userIDs.inserted_ids)
 gamesCollection = database["games"]
 gameList = [
     {"title": "Balloon Madness", "description": "Challenge your precision and reflexes in this addictive balloon-popping game!", "image": ""},
-    {"title": "Endless Runner", "description": "", "image": ""},
+    {"title": "Endless Runner", "description": "Dash through a dynamic world, dodge obstacles, and set new high scores in this exhilarating endless runner game!", "image": ""},
     {"title": "Coming Soon", "description": "[Coming Soon]", "image": ""}
 ]
 
@@ -61,20 +61,21 @@ try:
 
             highScoresCollection = database["scores"]
             highScoresList = [
-                 {"game": "", "user": "", "score": "22"},
-                 {"game": "", "user": "", "score": "33"},
-                 {"game": "", "user": "", "score": "11"},
-                 {"game": "", "user": "", "score": "44"},
-                 {"game": "", "user": "", "score": "55"},
-                 {"game": "", "user": "", "score": "88"}
+                 {"game": "", "user": "", "score": 22},
+                 {"game": "", "user": "", "score": 33},
+                 {"game": "", "user": "", "score": 11},
+                 {"game": "", "user": "", "score": 44},
+                 {"game": "", "user": "", "score": 55},
+                 {"game": "", "user": "", "score": 88}
             ]
 
 
-            # ===De facut cu un for probabil===         
+            # De facut cu un for probabil===      
+            #  probabil foloseam si asta str(gamesIDs.inserted_ids[0]) 
+            # sa elimin nevoia de a folosi in routes  from bson.objectid import ObjectId
 
             highScoresList[0]["game"] = gamesIDs.inserted_ids[0]
             highScoresList[0]["user"] = userIDs.inserted_ids[0]
-
 
             highScoresList[1]["game"] = gamesIDs.inserted_ids[1]
             highScoresList[1]["user"] = userIDs.inserted_ids[1]

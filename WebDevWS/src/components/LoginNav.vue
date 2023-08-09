@@ -15,14 +15,14 @@
         name: 'LoginNav',
         methods: {
             goToLogin() {
-                this.$emits('changeState', {
+                this.$emit('changeState', {
                     state: 0,
                     showPopup: false,
                 });
             },
 
             goToRegister() {
-                this.$emits('changeState', {
+                this.$emit('changeState', {
                     state: -1,
                     showPopup: false,
                 });
