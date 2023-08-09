@@ -69,6 +69,9 @@ try:
                  {"game": "", "user": "", "score": "88"}
             ]
 
+
+            # ===De facut cu un for probabil===         
+
             highScoresList[0]["game"] = gamesIDs.inserted_ids[0]
             highScoresList[0]["user"] = userIDs.inserted_ids[0]
 

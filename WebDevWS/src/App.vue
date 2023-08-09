@@ -23,7 +23,7 @@
   </div>
 
   <div v-else-if="state.state == 1">
-    <Menu  @changeState="updatedStateHandler" @selectedGame="game = $event"></Menu>
+    <Menu  @changeState="updatedStateHandler" @selectedGame="game = $event" @selectedGameID="id = $event"></Menu>
     <div v-if="state.showPopup == true">
       <PopUp @changeState="updatedStateHandler"></PopUp>
     </div>
@@ -32,8 +32,8 @@
   <!-- Pagina de highscores a fiecarui joc sa aiba state uri diferite?-->
 
   <div v-else-if="state.state == 2 || state.state == 3 || state.state == 4">
-    <MenuNav  @changeState="updatedStateHandler" :name="game"></MenuNav>
-    <Highscores></Highscores>
+    <MenuNav  @changeState="updatedStateHandler" :name="game" :id="id"></MenuNav>
+    <Highscores :id="id"></Highscores>
     <div v-if="state.showPopup == true">
       <PopUp @changeState="updatedStateHandler"></PopUp>
     </div>

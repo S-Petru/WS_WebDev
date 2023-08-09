@@ -5,45 +5,45 @@
                 <th>USERNAME</th>
                 <th>H_SCORE</th>
             </tr>
-            <tr>
-                <td>Usr1</td>
-                <td>312</td>
-            </tr>
-    
-            <tr>
-                <td>Usr2</td>
-                <td>56</td>
-            </tr>
-    
-            <tr>
-                <td>Usr3</td>
-                <td>123</td>
-            </tr>
-    
-            <tr>
-                <td>Usr4</td>
-                <td>11</td>
-            </tr>
-    
-            <tr>
-                <td>Usr5</td>
-                <td>11</td>
-            </tr>
-    
-            <tr>
-                <td>Usr6</td>
-                <td>11</td>
-            </tr>
-    
-            <tr>
-                <td>Usr7</td>
-                <td>11</td>
+            <tr v-for="i in scores.length" :key="i">
+                <td> {{ scores[i-1].user }}</td>
+                <td> {{ scores[i-1].score }}</td>
             </tr>
         </table>
     </div>
 </template>
 
 <script scoped>
+    import axios from 'axios'
+    export default {
+        name: "HighScores",
+        props: ['id'],
+        data(){
+            return {
+                scores: []
+            }
+        },
+        mounted() {
+            this.init()
+        },
+        methods: {
+            async init() {
+                // console.log('TEST')
+                const api = axios.create({
+                    baseURL: 'http://127.0.0.1:5000',
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    },
+                    timeout: 10000
+                })
+
+                const response = await api.get('/getScoresByGameID/' + this.id)
+                console.log(response)
+                this.scores = response.data.result
+            
+            }
+        }
+    }
 
 </script>
 

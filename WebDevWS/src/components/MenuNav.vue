@@ -13,14 +13,6 @@
     </nav>
 </template>
 
-<!-- goToLogin() {
-    this.$emit('changeState', 0);
-},
-
-goToRegister() {
-    this.$emit('changeState', -1);
-} -->
-
 <script scoped>
     export default {
         name: 'MenuNav',

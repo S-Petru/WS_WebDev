@@ -43,16 +43,19 @@
         methods: {
             init () {
                 var game1 = {
+                    id: '64d33b76da5eaaac8824754b',
                     title: 'Balloon Madness',
                     description: 'Challenge your precision and reflexes in this addictive balloon-popping game!',
                     image: 'public/balloons.avif'
                 }
                 var game2 = {
+                    id: '64d33b76da5eaaac8824754c',
                     title: 'Endless Runner',
                     description: 'Dash through a dynamic world, dodge obstacles, and set new high scores in this exhilarating endless runner game!',
                     image: 'public/runner.jpg'
                 }
                 var game3 = {
+                    id: '64d33b76da5eaaac8824754d',
                     title: 'Coming Soon',
                     description: '[Description Soon]',
                     image: 'public/comingSoon.jpg'
@@ -72,7 +75,6 @@
                     }
                 }
             },
-
             goToMenu() {
                 this.$emit('changeState', {
                         state: 1,
@@ -85,24 +87,6 @@
                         showPopup: true,
                     });
             },
-            // goToHighscoresBaloons() {
-            //     this.$emit('changeState', {
-            //             state: 2,
-            //             showPopup: false,
-            //         });
-            // },
-            // goToHighscoresRunner() {
-            //     this.$emit('changeState', {
-            //             state: 3,
-            //             showPopup: false,
-            //         });
-            // },
-            // goToHighscoresComingSoon() {
-            //     this.$emit('changeState', {
-            //             state: 4,
-            //             showPopup: false,
-            //         });
-            // },
             selectGame(pos) {
                 if(pos-1 == 0){
                     this.$emit('changeState', {
@@ -121,8 +105,10 @@
                 }); 
                 }
                 this.$emit('selectedGame', this.games[pos-1].title)
+                this.$emit('selectedGameID', this.games[pos-1].id)
             }
-        }
+        },
+        // props: ['id'],
     }
 </script>
 
