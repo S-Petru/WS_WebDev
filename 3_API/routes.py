@@ -28,17 +28,22 @@ def add_user(username, password):
     document = userCollection.find_one(query)
     
     if(document):
-        print("Userul Exista")
+        print("Userul exista")
         return("Userul exista")
     else:
-        requested_id = 0
-        data = {
-            'username': username,
-            'password': password
-        }
+        # requested_id = 0
+        # data = {
+        #     'username': username,
+        #     'password': password
+        # }
 
-        requested_id = userCollection.insert_one(data).inserted_id
-        return jsonify(str(requested_id))
+        new_user = {'username': username, 'password': password}
+        userCollection.insert_one(new_user)
+
+        return jsonify(str(new_user))
+
+        # requested_id = userCollection.insert_one(data).inserted_id
+        # return jsonify(str(requested_id))
 
 
 

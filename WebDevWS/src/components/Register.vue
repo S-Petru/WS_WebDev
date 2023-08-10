@@ -5,10 +5,11 @@
             <!-- <label>Email: </label>
             <input type="text" placeholder="Lasa fara" id="username"> -->
             <label>Username: </label>
-            <input type="text" placeholder="Choose Username" id="username">
+            <input v-model="username" placeholder="Choose Username" id="username" />
             <label>Password: </label>
-            <input type="password" placeholder="Choose Password" id="password">
+            <input v-model="password" placeholder="Choose Password" type="password" id="password" />
             <p style="color: red;" id="err"></p>
+            <p v-if = "registrationStatus" style="color: yellow;">{{ registrationStatus }}</p>
             <button type="button" @click="tryRegister()">Register</button>
         </div>
     </div>
@@ -22,37 +23,64 @@
         // mounted() {
         //     this.init()
         // },
-        // data() {
-
-        // },
+         data() {
+            return {
+                username: '',
+                password: '',
+                registrationStatus: ''
+            };
+        },
         methods: {
              async tryRegister() {
                 
                 if (document.getElementById('username').value && document.getElementById('password').value) {
-                    const api = axios.create({
-                        baseURL: 'http://127.0.0.1:5000',
-                        headers: {
-                            'Content-Type': 'multipart/form-data'
-                        },
-                        timeout: 10000
-                    })
-                        
-                        usrName = String(document.getElementById('username').value)
-                        passWrd = String(document.getElementById('password').value)
 
-                        const response =  await axios.post('/registerUser/' + usrName + '/' + passWrd,
-                        formData,
-                        {
-                            headers: {
-                                'Content-Type': 'multipart/form-data'
-                        }
+                    this.username = document.getElementById('username').value
+                    this.password = document.getElementById('password').value
+                    try {
+
+                        const api = axios.create({
+                            baseURL: 'http://127.0.0.1:5000',
+                            headers: { 'Content-Type': 'multipart/form-data'
+                            },
+                            timeout: 10000
                         })
-                        console.log(response)
 
-                        this.$emit('changeState', {
-                            state: 0,
-                            showPopup: false,
-                        });
+                        const response = await api.post(`/registerUser/${this.username}/${this.password}`);
+                        
+                        if (response.data === 'Userul exista') {
+                            this.registrationStatus = 'User already exists';
+                        } else {
+                            this.registrationStatus = 'User registered successfully';
+                        }
+                    } catch (error) {
+                        console.error('Err registering user:', error);
+                        this.registrationStatus = 'Error registering user';
+                    }
+                    // const api = axios.create({
+                    //     baseURL: 'http://127.0.0.1:5000',
+                    //     headers: {
+                    //         'Content-Type': 'multipart/form-data'
+                    //     },
+                    //     timeout: 10000
+                    // })
+                        
+                    //     usrName = String(document.getElementById('username').value)
+                    //     passWrd = String(document.getElementById('password').value)
+
+                    //     const response =  await axios.post('/registerUser/' + usrName + '/' + passWrd,
+                    //     formData,
+                    //     {
+                    //         headers: {
+                    //             'Content-Type': 'multipart/form-data'
+                    //     }
+                    //     })
+                    //     console.log(response)
+
+                    //     this.$emit('changeState', {
+                    //         state: 0,
+                    //         showPopup: false,
+                    //     });
                     } else {
                         document.getElementById('err').textContent = 'Please fill in all fields';
                         setTimeout(() => {
